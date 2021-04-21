@@ -45,7 +45,7 @@ def get_v_list_data(upid, iPersist: IPersist):
 
     headers = {
         ':authority': 'api.bilibili.com',
-        ':path': '/x/space/arc/search?mid=927587&ps=30&tid=0&pn=1&keyword=&order=pubdate&jsonp=jsonp',
+        # ':path': '/x/space/arc/search?mid=927587&ps=30&tid=0&pn=1&keyword=&order=pubdate&jsonp=jsonp',
         ':scheme': 'https',
         'accept': 'pplication/json, text/plain, */*',
         'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
@@ -69,10 +69,11 @@ def get_v_list_data(upid, iPersist: IPersist):
     # 获取第一页的视频列表信息
     pd_v_list_data = parsing_data_list(json_data)
     # 循环获取数据
-    for i in range(page_total_num) - 1:
+    for i in range(page_total_num - 1):
         current_page_num = i + 2
         json_data = url_tools.http2json(list_url.format(upid, current_page_num), headers)
-        pd_v_list_data.append(parsing_data_list(json_data))
-
+        pd_v_list_data = pd_v_list_data.append(parsing_data_list(json_data))
     iPersist.write()
+    return pd_v_list_data['bvid']
+
 
