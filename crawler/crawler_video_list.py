@@ -1,6 +1,9 @@
-from tools import UrlTools
 import math
 import pandas as pd
+
+from tools import url_tools
+from common.constant import b_url
+from persist.persist import IPersist
 
 
 def parsing_page_number(json_data):
@@ -38,8 +41,8 @@ def parsing_data_list(json_data):
     return pd.DataFrame(v_data_list)
 
 
-def get_v_list_data():
-    upid = '927587'
+def get_v_list_data(upid, iPersist: IPersist):
+
     headers = {
         ':authority': 'api.bilibili.com',
         ':path': '/x/space/arc/search?mid=927587&ps=30&tid=0&pn=1&keyword=&order=pubdate&jsonp=jsonp',
@@ -56,25 +59,20 @@ def get_v_list_data():
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36 Edg/89.0.774.77'
     }
     current_page_num = 1
-    url_template = "https://api.bilibili.com/x/space/arc/search?mid={}&ps=30&tid=0&pn={}&keyword=&order=pubdate&jsonp=jsonp"
-    list_url = url_template.format(upid, current_page_num)
+    list_url = b_url["up_video_list"]
     # 获取请求内容
-    json_data = UrlTools.http2json(list_url, headers)
+    json_data = url_tools.http2json(list_url.format(upid, current_page_num), headers)
     # 获取视频总数，每页容量，总页码
     video_count, page_capacity, page_total_num = parsing_page_number(json_data)
     # 获取视频分类信息
     pd_classify_data = parsing_data_classify(json_data)
+    # 获取第一页的视频列表信息
+    pd_v_list_data = parsing_data_list(json_data)
     # 循环获取数据
-    # for i in range(page_total_num):
-    for i in range(1):
-        current_page_num = i + 1
-        json_data = UrlTools.http2json(url_template.format(upid, current_page_num), headers)
-        pd_v_list_data = parsing_data_list(json_data)
+    for i in range(page_total_num) - 1:
+        current_page_num = i + 2
+        json_data = url_tools.http2json(list_url.format(upid, current_page_num), headers)
+        pd_v_list_data.append(parsing_data_list(json_data))
 
-
-
-if __name__ == '__main__':
-    get_v_list_data()
-
-
+    iPersist.write()
 
