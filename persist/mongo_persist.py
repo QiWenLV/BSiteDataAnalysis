@@ -25,12 +25,15 @@ class MongoPersist(persist.IPersist):
         elif type(index) == list:
             def_filter = lambda item: {i: item[i] for i in index}
         bulkWriteResult = coll_curr.bulk_write([pymongo.UpdateOne(def_filter(item), {"$set": item}, upsert=True) for item in json_data])
-        print(f"写入{bulkWriteResult.upserted_count()}条数据")
+        print("sink:{}, 匹配{}条数据".format(to_sink, bulkWriteResult.matched_count))
+        print("sink:{}, 写入{}条数据".format(to_sink, bulkWriteResult.upserted_count))
+        print("sink:{}, 修改{}条数据".format(to_sink, bulkWriteResult.modified_count))
 
     def read(self, source, filter):
         coll_curr = self.bili_db[source]
         result = pd.DataFrame([item for item in coll_curr.find(filter)])
-        result.drop(columns="_id", inplace=True)
+        if not result.empty:
+            result.drop(columns="_id", inplace=True)
         return result
 
     def count(self, source, filter) -> int:
