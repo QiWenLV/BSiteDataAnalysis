@@ -1,5 +1,3 @@
-import math
-import pandas as pd
 from common.constant import *
 from tools.common_tools import flat_json
 
