@@ -66,7 +66,7 @@ def get_v_list_data(upid, iPersist: IPersist, increment=True):
             video_count = diff_count
         else:
             print(f"up:{upid}, 视频总数:{video_count}, 无需更新")
-            return
+            return [], []
     print(f"up:{upid}, 需更新{video_count}个视频信息")
     # 获取视频分类信息
     pd_classify_data = parsing_data_classify(json_data)
