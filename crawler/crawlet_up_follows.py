@@ -13,7 +13,11 @@ def get_up_follows(upid):
     """
     title_tag = ["mid", "attribute", "mtime", "tag", "special", "uname"]
     # 计算关注量(因为B站限制只能查看5页)
-    follow_total = url_tools.http2json(b_url[UP_FOLLOW].format(upid, 1, 1), url_tools.headers())["data"]["total"]
+    follow_data = url_tools.http2json(b_url[UP_FOLLOW].format(upid, 1, 1), url_tools.headers())
+    if follow_data["data"] is None:
+        print(follow_data['message'])
+        return
+    follow_total = follow_data["total"]
     ps = follow_total // 4
     # 获取请求内容
     follows_list = []

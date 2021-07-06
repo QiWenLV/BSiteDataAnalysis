@@ -26,8 +26,9 @@ def crawler(upid, iPersist: IPersist):
 
 
 if __name__ == '__main__':
-    upid = 176037767
+    upid = 19642758
     mongo_persist = MongoPersist()
 
 
     crawler(upid, mongo_persist)
+    print("获取完成")

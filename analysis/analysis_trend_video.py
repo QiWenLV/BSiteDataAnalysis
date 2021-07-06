@@ -14,6 +14,8 @@ class AnalysisVideo:
         self.df_data = pd.DataFrame(data_dict)
         self.df_data['created'] = pd.to_datetime(self.df_data['created'], unit='s')
 
+
+
     def month_video_play_rate(self):
         df3 = self.df_data[['created', 'stat#favorite', 'stat#coin', 'stat#like', 'play']]
         df3 = df3.groupby([df3.created.dt.year, df3.created.dt.month]).agg('sum')
@@ -29,6 +31,7 @@ class AnalysisVideo:
         df1 = self.df_data[['created', 'stat#favorite', 'stat#coin', 'stat#like']]
         df2 = df1.groupby([df1.created.dt.year, df1.created.dt.month]).agg('sum')
         # df2.iplot(kind='bar', barmode='stack', orientation='v')
+        df2.iplot(kind='histogram', bins=10)
         return df2
 
 
