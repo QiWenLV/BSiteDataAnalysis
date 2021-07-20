@@ -1,6 +1,6 @@
-import requests
-from bs4 import BeautifulSoup
 import json
+
+import requests
 
 
 def http2json(url, header):
@@ -38,9 +38,12 @@ def headers():
 
 def user_agent():
     return {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.64'}
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.64'
+    }
 
 
 def cookies():
     return {
-        'cookie': "l=v; _uuid=F8667130-2265-A571-2531-C3F135313E2D49379infoc; buvid3=8E2D7209-C2EC-4A9E-BAC7-CEB3FABE4E1313441infoc; fingerprint=5a866b4a943c7accd52cbee2cf405149; buvid_fp=8E2D7209-C2EC-4A9E-BAC7-CEB3FABE4E1313441infoc; buvid_fp_plain=747FE9AD-8C06-47E5-9445-9A4B34F0674C34778infoc; SESSDATA=6dbd0a1a%2C1639279559%2Cc99db%2A61; bili_jct=c64cc9435f45afca9b36c477e4665746; DedeUserID=22966665; DedeUserID__ckMd5=41ccbfc3c6acad03; sid=anln2xdj; CURRENT_FNVAL=80; blackside_state=1; rpdid=|(um~u)RmJlJ0J'uYkJ~RlR~k; PVID=1; bp_video_offset_22966665=545005219282630512; bp_t_offset_22966665=548999749322443399"}
+        'cookie': "l=v; _uuid=F8667130-2265-A571-2531-C3F135313E2D49379infoc; buvid3=8E2D7209-C2EC-4A9E-BAC7-CEB3FABE4E1313441infoc; fingerprint=5a866b4a943c7accd52cbee2cf405149; buvid_fp=8E2D7209-C2EC-4A9E-BAC7-CEB3FABE4E1313441infoc; buvid_fp_plain=747FE9AD-8C06-47E5-9445-9A4B34F0674C34778infoc; SESSDATA=6dbd0a1a%2C1639279559%2Cc99db%2A61; bili_jct=c64cc9435f45afca9b36c477e4665746; DedeUserID=22966665; DedeUserID__ckMd5=41ccbfc3c6acad03; sid=anln2xdj; CURRENT_FNVAL=80; blackside_state=1; rpdid=|(um~u)RmJlJ0J'uYkJ~RlR~k; PVID=1; bp_video_offset_22966665=545005219282630512; bp_t_offset_22966665=548999749322443399"
+    }
+
