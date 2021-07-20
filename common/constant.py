@@ -5,13 +5,13 @@ UP_INFO = "up_info"
 UP_FOLLOW = "up_follow"
 VIDEO_C_INFO = "video_c_info"
 VIDEO_DETAIL = "video_detail"
-MYSELF_DYNAMIC = "myself_dynamic"
+MYSELF_NEW_DYNAMIC = "myself_new_dynamic"
+MYSELF_HIS_DYNAMIC = "myself_his_dynamic"
 
 b_url = {
     # 动态列表(登入账号)
-    # MYSELF_DYNAMIC: "https://t.bilibili.com",
-    # MYSELF_DYNAMIC: "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid={}&type_list=8&from=&platform=web",
-    MYSELF_DYNAMIC: "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_history?uid={}&offset_dynamic_id={}&type=8&from=&platform=web",
+    MYSELF_NEW_DYNAMIC: "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid={}&type_list=8&jsonp=jsonp",
+    MYSELF_HIS_DYNAMIC: "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_history?uid={}&offset_dynamic_id={}&type=8&from=&platform=web",
     # up视频列表
     UP_VIDEO_LIST: "https://api.bilibili.com/x/space/arc/search?mid={}&ps=30&tid=0&pn={}&keyword=&order=pubdate&jsonp=jsonp",
     # up关注信息
