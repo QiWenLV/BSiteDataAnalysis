@@ -25,8 +25,8 @@ def to_obtain_dynamic_list(last_time: datetime.datetime, limit=100):
         cards = next_data['cards']
         next_offset = next_data['next_offset']
     print("总计获取{}个视频链接".format(open_count))
-    # 打开链接
-    open_myself_dynamic(wait_open_url_list)
+    return wait_open_url_list
+
 
 
 def collect_url(cards, last_time: datetime.datetime, open_count, limit):
@@ -34,7 +34,11 @@ def collect_url(cards, last_time: datetime.datetime, open_count, limit):
     is_down = True
     for card in cards:
         if int(card['desc']['timestamp']) > last_time.timestamp() and open_count < limit:
-            wait_open_url_list.append(DYNAMIC_URL + card['desc']['bvid'])
+            wait_open_url_list.append({
+                'bvid': card['desc']['bvid'],
+                'up': card['desc']['user_profile']['info']['uname'],
+                'time': card['desc']['timestamp']
+            })
             open_count += 1
         else:
             is_down = False

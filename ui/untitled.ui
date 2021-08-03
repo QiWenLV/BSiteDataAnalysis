@@ -36,18 +36,18 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
-          <width>212</width>
-          <height>409</height>
+          <y>8</y>
+          <width>181</width>
+          <height>391</height>
          </rect>
         </property>
         <property name="title">
-         <string>GroupBox</string>
+         <string>一键打开动态</string>
         </property>
         <widget class="QDateTimeEdit" name="dateTimeEdit">
          <property name="geometry">
           <rect>
-           <x>30</x>
+           <x>10</x>
            <y>40</y>
            <width>154</width>
            <height>21</height>
@@ -57,14 +57,14 @@
         <widget class="QPushButton" name="openBtn">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>170</y>
-           <width>181</width>
-           <height>61</height>
+           <x>40</x>
+           <y>190</y>
+           <width>91</width>
+           <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>一键打开动态</string>
+          <string>打开动态</string>
          </property>
         </widget>
         <widget class="QLabel" name="label">
@@ -89,6 +89,65 @@
            <height>22</height>
           </rect>
          </property>
+        </widget>
+        <widget class="QPushButton" name="scanBtn">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>140</y>
+           <width>91</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>扫描</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QTabWidget" name="listTab">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>10</y>
+          <width>241</width>
+          <height>391</height>
+         </rect>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="detailTab">
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <attribute name="title">
+          <string>Tab 1</string>
+         </attribute>
+         <widget class="QTableView" name="tableView">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>231</width>
+            <height>371</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="blackTab">
+         <attribute name="title">
+          <string>Tab 2</string>
+         </attribute>
+         <widget class="QTableView" name="tableView_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>231</width>
+            <height>361</height>
+           </rect>
+          </property>
+         </widget>
         </widget>
        </widget>
       </widget>
