@@ -45,11 +45,12 @@ class MainWindow(QMainWindow):
 
     def scan_dynamic_click(self):
         # 扫描动态
-        self.last_time = self.ui.dateTimeEdit.dateTime().toPython()
         limit = self.ui.limitNum.value()
-        self.wait_open_url_list = to_obtain_dynamic_list(self.last_time, limit)
+        self.wait_open_url_list = to_obtain_dynamic_list(self.ui.dateTimeEdit.dateTime().toPython(), limit)
         # 将扫描结果显示在表格控件中
         self.scan_rst_view_table(self.wait_open_url_list)
+        # 修改最后扫描时间
+        self.last_time = datetime.datetime.now()
 
     def scan_rst_view_table(self, wait_open_url_list):
         model = QStandardItemModel(0, 4, self.ui.detailTable)
