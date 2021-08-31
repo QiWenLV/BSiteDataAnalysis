@@ -37,7 +37,7 @@ def collect_url(cards, last_time: datetime.datetime, open_count, limit):
             wait_open_url_list.append({
                 'bvid': card['desc']['bvid'],
                 'up': card['desc']['user_profile']['info']['uname'],
-                'time': card['desc']['timestamp']
+                'time': datetime.datetime.fromtimestamp(card['desc']['timestamp'])
             })
             open_count += 1
         else:
