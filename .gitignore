@@ -1,2 +1,5 @@
 .idea
 .gitignore
+BSiteDataAnalysis.egg-info
+build
+dist
