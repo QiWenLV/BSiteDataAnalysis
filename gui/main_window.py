@@ -1,9 +1,5 @@
 import sys
 
-from PySide2.QtCore import *
-from PySide2.QtGui import *
-from PySide2.QtWidgets import *
-
 from browser.open_dynamic import to_obtain_dynamic_list, open_myself_dynamic, DYNAMIC_URL
 from gui.ui.ui_mainwindow import Ui_MainWindow
 from config.setting import *
