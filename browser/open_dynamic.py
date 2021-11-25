@@ -1,5 +1,6 @@
 import webbrowser as web
 import datetime
+import demjson
 from tools import url_tools
 from common.constant import *
 
@@ -34,10 +35,19 @@ def collect_url(cards, last_time: datetime.datetime, open_count, limit):
     is_down = True
     for card in cards:
         if int(card['desc']['timestamp']) > last_time.timestamp() and open_count < limit:
+            video_desc = demjson.decode(card['card'].replace('\n', '').replace('\r\n', ''))
             wait_open_url_list.append({
                 'bvid': card['desc']['bvid'],
                 'up': card['desc']['user_profile']['info']['uname'],
-                'time': datetime.datetime.fromtimestamp(card['desc']['timestamp'])
+                'time': datetime.datetime.fromtimestamp(card['desc']['timestamp']),
+                'title': video_desc['title'],
+                'url': video_desc['short_link'],
+                'like': video_desc['stat']['like'],
+                'coin': video_desc['stat']['coin'],
+                'favorite': video_desc['stat']['favorite'],
+                'view': video_desc['stat']['view'],
+                'videos': video_desc['videos'],
+                'mid': video_desc['owner']['mid']
             })
             open_count += 1
         else:

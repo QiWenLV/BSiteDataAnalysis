@@ -14,8 +14,8 @@ class IPersist:
         """
         pass
 
-    def read(self, source, filter):
+    def read(self, source, filter=None):
         pass
 
-    def count(self, source, filter) -> int:
+    def count(self, source, filter=None) -> int:
         pass
