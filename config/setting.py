@@ -23,7 +23,7 @@ class Setting:
                 self.cf.write(fw)
 
     def get(self, group, key):
-        return self.cf.get(group, key)
+        return self.cf.get(group, key, raw=True)
 
     def set(self, group, key, value):
         if not self.cf.sections().__contains__(group):
@@ -40,4 +40,6 @@ class Group:
 class Key:
     last_time = 'last_time'
     limit_num = 'limit_num'
+    myid = 'myid'
+    cookie = 'cookie'
 

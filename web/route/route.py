@@ -1,5 +1,6 @@
 from web.service.home import *
 from web.service.black_list import *
+from web.service.web_setting import *
 
 
 def setup_routes(app):
@@ -16,3 +17,6 @@ def setup_routes(app):
     app.router.add_get('/api/case/list', get_case_list)
     # 更改一个关注up的关注类型 [0=正常，1=特别关注，2=黑名单]
     app.router.add_post('/api/case/change', set_change_one)
+
+    # -------------------web_setting
+    app.router.add_post('/api/setting/kv', set_seting_kv)

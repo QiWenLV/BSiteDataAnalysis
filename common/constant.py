@@ -7,6 +7,7 @@ VIDEO_C_INFO = "video_c_info"
 VIDEO_DETAIL = "video_detail"
 MYSELF_NEW_DYNAMIC = "myself_new_dynamic"
 MYSELF_HIS_DYNAMIC = "myself_his_dynamic"
+FOLLOW_TAGS = "follow_tags"
 
 b_url = {
     # 动态列表(登入账号)
@@ -20,6 +21,8 @@ b_url = {
     UP_INFO: "https://api.bilibili.com/x/space/acc/info?mid={}&jsonp=jsonp",
     # up关注列表
     UP_FOLLOW: "https://api.bilibili.com/x/relation/followings?vmid={}&pn={}&ps={}&order=desc&jsonp=jsonp",
+    # 关注分组
+    FOLLOW_TAGS: "https://api.bilibili.com/x/relation/tags?jsonp=jsonp",
     # 联合投稿up列表
     VIDEO_C_INFO: "https://api.bilibili.com/x/relation/relations?fids=285499073%2C19642758%2C13354765%2C7552204",
     # 视频详细信息
