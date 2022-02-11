@@ -4,6 +4,7 @@ import datetime
 from common.web_result import *
 from config.setting import *
 import time
+from functools import reduce
 
 
 setting = Setting()
@@ -22,9 +23,14 @@ async def get_home_table(req):
     scan_time = time.mktime(datetime.datetime.now().timetuple())
     # 获取动态列表
     wait_open_url_list = to_obtain_dynamic_list(datetime.datetime.fromtimestamp(int(start_timestamp)), int(limit))
+    new_s = []  # 存储去重后的数据
     for i in wait_open_url_list:
         i['time'] = int(i['time'].timestamp())
-    return web.json_response(result({"list": wait_open_url_list, "scan_time": scan_time}))
+        if any(str(d.get('bvid', None)).lower() == str(i['bvid']).lower() for d in new_s):
+            pass
+        else:
+            new_s.append(i)
+    return web.json_response(result({"list": new_s, "scan_time": scan_time}))
 
 
 # async def get_home_table(req):
